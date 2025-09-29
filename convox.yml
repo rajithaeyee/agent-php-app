@@ -1,7 +1,12 @@
 environment:
   - PORT=80
+
 services:
   web:
-    domain: ${HOST}
     build: .
     port: 80
+    health: /api/status
+    scale:
+      count: 1
+      cpu: 250
+      memory: 512
